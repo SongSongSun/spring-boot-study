@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletResponse;
-
 /**
  * @author ：song
  * @date ：Created in 2019/11/12 17:43
@@ -64,5 +62,10 @@ public class LoginController {
         System.out.println(user.toString());
         model.addAttribute("user", user);
         return "index";
+    }
+
+    @GetMapping("/403")
+    public String forbid() {
+        return "403";
     }
 }

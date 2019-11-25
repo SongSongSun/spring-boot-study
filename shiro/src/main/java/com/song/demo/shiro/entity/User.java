@@ -1,10 +1,9 @@
 package com.song.demo.shiro.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -15,10 +14,12 @@ import java.util.Date;
  * @version: $
  */
 @Data
-public class User  {
+@TableName("t_user")
+public class User implements Serializable {
+
     private Integer id;
-    private String userName;
-    private String password;
+    private String username;
+    private String passwd;
     private String status;
     private Date createTime;
 }
