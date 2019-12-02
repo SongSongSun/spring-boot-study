@@ -28,6 +28,8 @@
     </properties>
     <modules>
         <module>mybatisplus</module>
+        <module>shiro</module>
+        <module>spring-security</module>
     </modules>
 
     <dependencyManagement>
@@ -61,6 +63,11 @@
                 <groupId>eu.bitwalker</groupId>
                 <artifactId>UserAgentUtils</artifactId>
                 <version>${user.agent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <optional>true</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>
