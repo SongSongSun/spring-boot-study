@@ -30,6 +30,9 @@
         <module>mybatisplus</module>
         <module>shiro</module>
         <module>spring-security</module>
+        <module>spring-security-oauth2</module>
+        <module>multi-datasource</module>
+        <module>multi-tenant</module>
     </modules>
 
     <dependencyManagement>
