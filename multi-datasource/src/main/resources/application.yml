@@ -1,0 +1,54 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    druid:
+      stat-view-servlet:
+        enabled: true
+        loginUsername: admin
+        loginPassword: 123456
+    dynamic:
+      druid: #以下是全局默认值，可以全局更改
+        initial-size: 5
+        max-active: 20
+        min-idle: 5
+        # 连接等待超时时间
+        max-wait: 30000
+        # 配置检测可以关闭的空闲连接间隔时间
+        time-between-eviction-runs-millis: 60000
+        # 配置连接在池中的最小生存时间
+        min-evictable-idle-time-millis: 300000
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        validation-query: select '1' from dual
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        pool-prepared-statements: true
+        max-pool-prepared-statement-per-connection-size: 20
+        filters: stat,wall # 注意这个值和druid原生不一致，默认启动了stat,wall
+        stat:
+          log-slow-sql: true
+          #慢sql
+          slow-sql-millis: 3000
+      datasource:
+        master:
+          username: root
+          password: song
+          url: jdbc:mysql://127.0.0.1:3306/test01?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          druid:
+            # Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
+            aop-patterns: com.song.multidatasource.service.*
+        slave:
+          username: root
+          password: song
+          url: jdbc:mysql://127.0.0.1:3306/test02?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          druid:
+            # Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
+            aop-patterns: com.song.multidatasource.service.*
+
+
+
+
